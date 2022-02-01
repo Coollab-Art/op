@@ -37,4 +37,73 @@ private:
     }
 };
 
+template<typename Derived>
+class Multipliable {
+public:
+    friend Derived operator*(Derived a, Derived b)
+    {
+        return Derived{a.value * b.value};
+    }
+
+    void operator*=(Derived x)
+    {
+        This().value *= x.value;
+    }
+
+private:
+    Derived& This()
+    {
+        return *static_cast<Derived*>(this);
+    }
+};
+
+template<typename Derived>
+class Addable {
+public:
+    friend Derived operator+(Derived a, Derived b)
+    {
+        return Derived{a.value + b.value};
+    }
+
+    void operator+=(Derived x)
+    {
+        This().value += x.value;
+    }
+
+private:
+    Derived& This()
+    {
+        return *static_cast<Derived*>(this);
+    }
+};
+
+template<typename Derived>
+class Subtractable {
+public:
+    friend Derived operator-(Derived a, Derived b)
+    {
+        return Derived{a.value - b.value};
+    }
+
+    void operator-=(Derived x)
+    {
+        This().value -= x.value;
+    }
+
+private:
+    Derived& This()
+    {
+        return *static_cast<Derived*>(this);
+    }
+};
+
+template<typename Derived>
+class Negatable {
+public:
+    friend Derived operator-(Derived derived)
+    {
+        return Derived{-derived.value};
+    }
+};
+
 } // namespace op
