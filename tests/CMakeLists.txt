@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(op-tests)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} test.cpp)
 if (MSVC)
     target_compile_options(${PROJECT_NAME} PRIVATE /WX /W4)
 else()
