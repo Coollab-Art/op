@@ -106,4 +106,13 @@ public:
     }
 };
 
+template<typename Derived>
+class EqualityComparable {
+public:
+    friend auto operator==(Derived derived1, Derived derived2) -> bool
+    {
+        return derived1.value == derived2.value;
+    }
+};
+
 } // namespace op
