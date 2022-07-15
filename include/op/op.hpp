@@ -106,6 +106,8 @@ public:
     }
 };
 
+// Even if we had C++20, we would need that over the defaulted == operator because the later doesn't work when inheriting from op's classes.
+// (They can't define an operator == otherwise it would be ambiguous (NB: maybe if we use private inheritance this would solve the problem))
 template<typename Derived>
 class EqualityComparable {
 public:
