@@ -9,7 +9,7 @@ else()
 endif()
 
 # ---Add op---
-add_subdirectory(.. op-tests)
+add_subdirectory(.. ${CMAKE_CURRENT_SOURCE_DIR}/build/op)
 target_link_libraries(${PROJECT_NAME} PRIVATE op::op)
 
 # ---Add doctest---
