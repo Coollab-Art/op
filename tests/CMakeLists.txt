@@ -10,7 +10,7 @@ endif()
 
 # ---Add op---
 add_subdirectory(.. op-tests)
-target_link_libraries(${PROJECT_NAME} op::op)
+target_link_libraries(${PROJECT_NAME} PRIVATE op::op)
 
 # ---Add doctest---
 include(FetchContent)
