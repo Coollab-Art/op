@@ -19,13 +19,13 @@ This is very modular because – depending on the semantics of your type – som
 
 To add this library to your project, simply add those two lines to your *CMakeLists.txt*:
 ```cmake
-add_subdirectory(path/to/cmd)
-target_link_libraries(${PROJECT_NAME} PRIVATE cmd::cmd)
+add_subdirectory(path/to/op)
+target_link_libraries(${PROJECT_NAME} PRIVATE op::op)
 ```
 
 Then include it as:
 ```cpp
-#include <cmd/cmd.hpp>
+#include <op/op.hpp>
 ```
 
 ## Usage
