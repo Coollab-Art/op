@@ -2,10 +2,22 @@ cmake_minimum_required(VERSION 3.8)
 project(op-tests)
 
 add_executable(${PROJECT_NAME} test.cpp)
+
+# Set warning level
 if (MSVC)
-    target_compile_options(${PROJECT_NAME} PRIVATE /WX /W4)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
 else()
-    target_compile_options(${PROJECT_NAME} PRIVATE -Werror -Wall -Wextra -Wpedantic -pedantic-errors -Wconversion -Wsign-conversion)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -pedantic-errors -Wconversion -Wsign-conversion)
+endif()
+
+# Maybe enable warnings as errors
+set(WARNINGS_AS_ERRORS_FOR_OP OFF CACHE BOOL "ON iff you want to treat warnings as errors")
+if(WARNINGS_AS_ERRORS_FOR_OP)
+    if(MSVC)
+        target_compile_options(${PROJECT_NAME} PRIVATE /WX)
+    else()
+        target_compile_options(${PROJECT_NAME} PRIVATE -Werror)
+    endif()
 endif()
 
 # ---Add op---
