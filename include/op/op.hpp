@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 namespace op {
 
 template<typename Derived>
@@ -114,6 +116,15 @@ public:
     friend auto operator==(Derived derived1, Derived derived2) -> bool
     {
         return derived1.value == derived2.value;
+    }
+};
+
+template<typename Derived>
+class Printable {
+public:
+    friend std::ostream& operator<<(std::ostream& os, Derived const& derived)
+    {
+        return os << derived.value;
     }
 };
 
